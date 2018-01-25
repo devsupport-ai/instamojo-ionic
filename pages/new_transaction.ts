@@ -13,15 +13,16 @@ export class NewTransactionPage {
   instamojoClient;
 
   constructor(private iab: InAppBrowser, private http: HTTP) {
-    this.instamojoClient = new Instamojo(http, iab, 'https://murmuring-river-69043.herokuapp.com/instamojo/instamojowithkey.php');
+    this.instamojoClient = new Instamojo(http, iab, '{{=it.now_transaction_token_url}}');
   }
 
   payNow() {
     var data = this.instamojoClient.getPaymentFields();
     data.purpose = "Test";            // REQUIRED
     data.amount = 9;                  // REQUIRED
+    
+    // do not change this
     data.redirect_url = "http://localhost";
-
     this.instamojoClient.payNow(data).then(response => {
       // alert("Payment complete: " + JSON.stringify(response));
     }).catch(err => {
