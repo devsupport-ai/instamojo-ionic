@@ -13,7 +13,7 @@ export class NewTransactionPage {
   instamojoClient;
 
   constructor(private iab: InAppBrowser, private http: HTTP) {
-    this.instamojoClient = new Instamojo(http, iab, '{{=it.now_transaction_token_url}}');
+    this.instamojoClient = new Instamojo(http, iab, '{{=it.new_transaction_token_url}}');
   }
 
   payNow() {
